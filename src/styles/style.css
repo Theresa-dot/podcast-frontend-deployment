@@ -1,0 +1,41 @@
+.navhead{
+    font-family: 'Poppins', sans-serif;
+}
+
+.navlink{
+    font-family: 'Poppins', sans-serif;
+    color: #A7727D;
+    text-decoration: none;
+}
+
+.navlink:hover, .navlink:focus{
+    color: black;
+}
+
+.login{
+    border-color: #A7727D;
+}
+
+.signup{
+    background-color: #A7727D;
+    color: white;
+}
+
+.searchbar{
+    border-radius: 15px;
+}
+
+.desc-1, .desc-2{
+    font-family: 'Poppins', sans-serif;
+}
+
+.desc-3{
+    font-family: 'Poppins', sans-serif;
+    color: #815B5B;
+}
+
+.flex-contact{
+    display: flex;
+    flex-direction: row;
+}
+
