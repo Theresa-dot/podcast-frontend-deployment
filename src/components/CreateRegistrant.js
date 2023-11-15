@@ -14,7 +14,7 @@ function CreateRegistrant() {
     const handleSubmit=(event)=>{
       event.preventDefault();
         const data={name:arr[0],email:arr[1],password:arr[2]}
-        Axios.post("http://localhost:4000/registerRoute/create-registrant",data)
+        Axios.post("https://podcast-deployment-backend.onrender.com/registerRoute/create-registrant",data)
         .then((res)=>{
             if(res.data==="User already exists"){
               alert("Username already exists")
