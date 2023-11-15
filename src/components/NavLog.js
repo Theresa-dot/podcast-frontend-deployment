@@ -15,7 +15,7 @@ function NavLog({ setNotLoggedIn, setAuthors }) {
       event.preventDefault();
       //console.log('handleKeyPress: '+searchTerm)
       axios({
-        url:'http://localhost:4000/searchRoute/search',
+        url:'https://podcast-deployment-backend.onrender.com/searchRoute/search',
         method:'post',
         data:{
           term:searchTerm.trim().toLocaleLowerCase()
