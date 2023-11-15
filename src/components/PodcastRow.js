@@ -31,8 +31,8 @@ function PodcastRow({ episodeTitle, author, date, duration, imageAlt, trackurl }
                 url={trackurl}
                 playing={isPlaying}
                 controls
-                width="500%"
-                height="30px"
+                width="500%" // Adjust the width as needed
+                height="30px" // Adjust the height as needed
               />
             </div>
             <small className="text-body-secondary">{duration}</small>
