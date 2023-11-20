@@ -10,7 +10,7 @@ function EditRegistrant({setNotLoggedIn}) {
     const [newData, setNewData] = useState([]);
 
     useEffect(() => {
-        Axios.get("http://localhost:4000/registerRoute/update-registrant/" + id)
+        Axios.get("https://podcast-deployment-backend.onrender.com/registerRoute/update-registrant/" + id)
             .then((res) => {
                 if (res.status === 200) {
                     const { name, email, password } = res.data;
@@ -29,7 +29,7 @@ function EditRegistrant({setNotLoggedIn}) {
 
     const handleSubmit = () => {
         const data = { name: newData[0], email: newData[1], password: newData[2] }
-        Axios.put("http://localhost:4000/registerRoute/update-registrant/" + id, data)
+        Axios.put("https://podcast-deployment-backend.onrender.com/registerRoute/update-registrant/" + id, data)
             .then((res) => {
                 if (res.status === 200){
                     alert("Record updated successfully");
