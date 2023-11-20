@@ -6,7 +6,7 @@ function Account(props) {
 
   const handleClick = async () => {
     try {
-      const response = await Axios.delete(`http://localhost:4000/registerRoute/delete-account/${_id}`);
+      const response = await Axios.delete(`https://podcast-deployment-backend.onrender.com/registerRoute/delete-account/${_id}`);
 
       if (response.status === 200) {
         alert("Record deleted successfully");
