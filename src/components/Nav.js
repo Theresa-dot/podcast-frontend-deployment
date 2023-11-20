@@ -37,7 +37,7 @@ function Nav(){
         </ul>
         <div className="mx-4 text-end">
             <Link to="/login-registrant" className="btn me-2 navlink login">Login</Link>
-            <Link to="/create-registrant" className="btn navlink signup" style={{ textDecoration: 'none', color: 'white' }}>
+            <Link to="/create-registrant" className="btn navlink signup">
                 Sign-up
             </Link>
         </div>

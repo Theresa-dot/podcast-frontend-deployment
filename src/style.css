@@ -8,17 +8,22 @@
     text-decoration: none;
 }
 
-.navlink:hover, .navlink:focus{
-    color: black;
+.signup{
+    background-color: #A7727D;
+    color: white; 
+    text-decoration: none;
+}
+
+.signup-btn{
+    color: white;
 }
 
 .login{
     border-color: #A7727D;
 }
 
-.signup{
-    background-color: #A7727D;
-    color: white;
+.navlink:hover, .navlink:focus{
+    color: black;
 }
 
 .searchbar{

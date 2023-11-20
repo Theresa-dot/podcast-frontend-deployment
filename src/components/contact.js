@@ -1,14 +1,49 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useState,useEffect} from 'react';
+import { useNavigate } from 'react-router-dom'
+import Axios from "axios"
 
 function Contact() {
+  const[Fname,setFname]=useState("");
+  const[Lname,setLname]=useState("");
+  const[email,setEmail]=useState("");
+  const[subject,setSubject]=useState("");
+  const[message,setMessage]=useState("");
+
+  useEffect(() => {
+    setFname(Fname);
+    setLname(Lname);
+    setEmail(email);
+    setSubject(subject);
+    setMessage(message);
+}, [Fname, Lname, email, subject, message]);
+
+
+  const arr = [Fname, Lname, email, subject, message];
+
+    const navigate=useNavigate();
+    const handleSubmit=(event)=>{
+      event.preventDefault();
+        const data={Fname:arr[0],Lname:arr[1],email:arr[2],subject:arr[3],message:arr[4]}
+        Axios.post("http://localhost:4000/contactRoute/contact",data)
+        .then((res)=>{
+          if(res.status===200){
+              alert("Message sent")
+              navigate('/contact')
+            }
+            else
+                Promise.reject();
+        })
+        .catch((err)=>alert(err));
+    }
   return (
     <div className="container flex-contact">
       <div className="site-section mx-5 my-4">
         <div className="container aos-init aos-animate" data-aos="fade-up">
           <div className="row">
             <div className="col-md-7 mb-5">
-              <form action="#" className="bg-white">
+              <form onSubmit={handleSubmit} className="bg-white">
                 <div className="navlink">
                   <div className="form-group row mb-4">
                     <div className="col-md-6">
@@ -20,6 +55,7 @@ function Contact() {
                         className="form-control"
                         id="c_fname"
                         name="c_fname"
+                        onChange={(event)=> setFname(event.target.value)}
                       />
                     </div>
                     <div className="col-md-6">
@@ -31,6 +67,7 @@ function Contact() {
                         className="form-control"
                         id="c_lname"
                         name="c_lname"
+                        onChange={(event)=> setLname(event.target.value)}
                       />
                     </div>
                   </div>
@@ -45,6 +82,7 @@ function Contact() {
                         id="c_email"
                         name="c_email"
                         placeholder=""
+                        onChange={(event)=> setEmail(event.target.value)}
                       />
                     </div>
                   </div>
@@ -58,6 +96,7 @@ function Contact() {
                         className="form-control"
                         id="c_subject"
                         name="c_subject"
+                        onChange={(event)=> setSubject(event.target.value)}
                       />
                     </div>
                   </div>
@@ -73,6 +112,7 @@ function Contact() {
                         rows={7}
                         className="form-control"
                         defaultValue={""}
+                        onChange={(event)=> setMessage(event.target.value)}
                       />
                     </div>
                   </div>

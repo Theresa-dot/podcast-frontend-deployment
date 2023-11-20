@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import Axios from "axios"
 import React from 'react';
 
-function LoginRegistrant({ setNotLoggedIn }){
+function LoginRegistrant({ setNotLoggedIn, setLoggedInUser }){
   const[name,setName]=useState("");
   const[password,setPassword]=useState("");
   const navigate=useNavigate();
@@ -14,6 +14,7 @@ function LoginRegistrant({ setNotLoggedIn }){
       Axios.post("http://localhost:4000/registerRoute/login-registrant",{name,password})
       .then((res)=>{
           if(res.data==="Success"){
+            setLoggedInUser(name);
             setNotLoggedIn(false); 
               navigate('/main')
           }

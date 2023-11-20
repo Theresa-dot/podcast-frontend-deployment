@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
-function Author({ author, categories, imageAlt}) {
+function Author({ author, categories, imageAlt,onSelect}) {
+  
 
   return (
     <div className="col-md-4">
@@ -23,7 +24,7 @@ function Author({ author, categories, imageAlt}) {
             <div className="d-flex justify-content-between align-items-center">
               <div className="btn-group">
                 <button type="button" className="btn btn-sm navlink login">
-                  <Link to="#" className="navlink">
+                  <Link onClick={onSelect} className="navlink">
                     View
                   </Link>
                 </button>

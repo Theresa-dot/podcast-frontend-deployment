@@ -9,6 +9,7 @@ function NavLog({ setNotLoggedIn, setAuthors }) {
     //console.log('onInputTyped: '+event.target.value)
     setSearchTerm(event.target.value)
   } 
+  
 
   const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
@@ -57,8 +58,8 @@ function NavLog({ setNotLoggedIn, setAuthors }) {
           <li class="nav-item"><Link to="/contact" class="nav-link navlink">Contact</Link></li>
         </ul>
         <div className="mx-4 text-end">
-            <Link to="/account" className="btn me-2 navlink login">Account</Link>
-            <Link to="/" onClick={handleLogout} className="btn navlink signup" style={{ textDecoration: 'none', color: 'white' }}>
+        <Link to="/registrantList" className="btn me-2 navlink login">Account</Link>
+            <Link to="/" onClick={handleLogout} className="btn navlink signup">
                 Logout
             </Link>
         </div>

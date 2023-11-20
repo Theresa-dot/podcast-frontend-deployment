@@ -1,9 +1,50 @@
 import '../style.css';
 import React from 'react'
 import PodcastRow from './PodcastRow';
+import Podcast from './podcast';
 import Author from './Author';
+import { useState,useEffect } from 'react';
+import axios from 'axios'
 
 function Main({authors}){
+     const [episodes,setEpisodes]=useState([])
+     const [selectedPodcast,setSelectedPodcast]=useState(null)
+
+     const selectPodcast=(podcast,event)=>{
+      event.preventDefault()
+      console.log('selectPodcast: '+JSON.stringify(podcast))
+      setSelectedPodcast(podcast)
+     }
+
+     useEffect(()=>{
+        console.log("SELECTED PODCAST CHANGED: "+JSON.stringify(selectedPodcast))
+        if(!selectedPodcast)
+          return
+        const url=`http://localhost:4000/searchRoute/feed?url=${selectedPodcast.feed}`
+        axios({
+          url,
+          method:'get'
+        })
+        .then(({data})=>{
+          console.log('FEED: '+JSON.stringify(data))
+          const {item} = data
+          const tracks=item.map((t,index)=>{
+              return{
+                id:index,
+                episodeTitle:t.title[0],
+                //description:t.description[0],
+                imageAlt:selectedPodcast.imageAlt,
+                trackurl:t.enclosure[0]['$'].url
+              }
+          })
+
+          setEpisodes(tracks)
+        })
+        .catch(err=>{
+
+        })
+     },[selectedPodcast])
+  
 
 
   const podcasts=[
@@ -33,12 +74,25 @@ function Main({authors}){
           <Author
           key={author.id}
           {...author}
+          onSelect={(e)=>selectPodcast(author,e)}
         />
         ))}
 
         </div>
       </div>
     </div>
+    <br/>
+    <br/>
+    <br/>
+    <div className="album bg-body-tertiary">
+      <div className="container">
+        <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          {episodes.map(podcast=><Podcast key={podcast.id} {...podcast} />)}
+        </div>
+      </div>
+    </div>
+    <br/>
+    <br/>
     <br/>
         <div className="col-lg-6 col-md-8">
       <h1 className="fw-bold">Featured <span style={{ color: '#967E76' }}>Podcasts</span></h1>
