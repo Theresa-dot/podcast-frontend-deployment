@@ -20,7 +20,7 @@ function Main({authors}){
         console.log("SELECTED PODCAST CHANGED: "+JSON.stringify(selectedPodcast))
         if(!selectedPodcast)
           return
-        const url=`http://localhost:4000/searchRoute/feed?url=${selectedPodcast.feed}`
+        const url=`https://podcast-deployment-backend.onrender.com/searchRoute/feed?url=${selectedPodcast.feed}`
         axios({
           url,
           method:'get'
