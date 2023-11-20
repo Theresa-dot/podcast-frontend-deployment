@@ -26,7 +26,7 @@ function Contact() {
     const handleSubmit=(event)=>{
       event.preventDefault();
         const data={Fname:arr[0],Lname:arr[1],email:arr[2],subject:arr[3],message:arr[4]}
-        Axios.post("http://localhost:4000/contactRoute/contact",data)
+        Axios.post("https://podcast-deployment-backend.onrender.com/contactRoute/contact",data)
         .then((res)=>{
           if(res.status===200){
               alert("Message sent")
